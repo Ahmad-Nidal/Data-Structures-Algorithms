@@ -2,24 +2,24 @@
 {
     public class MyList
     {
-        private int MaxSize = 5;
-        private int End { get; set; }
-        private int[] Arr { get; set; }
+        private int _maxSize = 5;
+        private int _End { get; set; }
+        private int[] _arr { get; set; }
 
         public MyList()
         {
-            Arr = new int[MaxSize];
-            End = -1;
+            _arr = new int[_maxSize];
+            _End = -1;
         }
 
         public bool IsEmpty()
         {
-            return End == -1;
+            return _End == -1;
         }
 
         public int Count()
         {
-            return End == -1 ? 0 : End + 1;
+            return _End == -1 ? 0 : _End + 1;
         }
         public void Fill(int maxNumber)
         {
@@ -30,57 +30,57 @@
         }
         public void Add(int item)
         {
-            if ((End + 1) != MaxSize)
+            if ((_End + 1) != _maxSize)
             {
-                Arr[++End] = item;
+                _arr[++_End] = item;
             }
             else
             {
-                MaxSize *= 2;
-                int[] NewArr = new int[MaxSize];
+                _maxSize *= 2;
+                int[] NewArr = new int[_maxSize];
 
-                Array.Copy(Arr, NewArr, End);
+                Array.Copy(_arr, NewArr, _End);
                 //for(int i = 0; i <= End; i++)
                 //    NewArr[i] = Arr[i];
 
-                Arr = NewArr;
-                Arr[++End] = item;
+                _arr = NewArr;
+                _arr[++_End] = item;
 
                 GC.Collect();
             }
         }
         public void InsertAt(int item, int index)
         {
-            for (int i = ++End; i > index; i--)
+            for (int i = ++_End; i > index; i--)
             {
-                Arr[i] = Arr[i - 1];
+                _arr[i] = _arr[i - 1];
             }
-            Arr[index] = item;
+            _arr[index] = item;
         }
         public void ReamoveAt(int index)
         {
-            for(int i = index; i < End; i++)
+            for(int i = index; i < _End; i++)
             {
-                Arr[i] = Arr[i+1];
+                _arr[i] = _arr[i+1];
             }
-            Arr[End--] = 0;
+            _arr[_End--] = 0;
         }
         public void EditItem(int newValue, int index)
         {
-            Arr[index] = newValue;
+            _arr[index] = newValue;
         }
         public void Print(bool oneLine=false)
         {
             if (!oneLine)
-                for (int i = 0; i <= End; i++)
+                for (int i = 0; i <= _End; i++)
                 {
-                    Console.WriteLine(Arr[i]);
+                    Console.WriteLine(_arr[i]);
                 }
             else
             {
-                for (int i = 0; i <= End; i++)
+                for (int i = 0; i <= _End; i++)
                 {
-                    Console.Write(Arr[i] + " ");
+                    Console.Write(_arr[i] + " ");
                 }
                 Console.WriteLine();
             }
@@ -88,9 +88,9 @@
         public override string ToString()
         {
             string resualt = "";
-            for (int i = 0; i <= End; i++)
+            for (int i = 0; i <= _End; i++)
             {
-                resualt += Arr[i] + " ";
+                resualt += _arr[i] + " ";
             }
             resualt += "\n";
             return resualt;
