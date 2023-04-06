@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTU.DSAlgo", "HTU.DSAlgo\HTU.DSAlgo.csproj", "{C231452B-1B1C-4165-A16A-3E2B5E7D31BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{128762FD-8547-4C1E-A26F-06BE574CAE9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C231452B-1B1C-4165-A16A-3E2B5E7D31BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C231452B-1B1C-4165-A16A-3E2B5E7D31BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C231452B-1B1C-4165-A16A-3E2B5E7D31BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{128762FD-8547-4C1E-A26F-06BE574CAE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{128762FD-8547-4C1E-A26F-06BE574CAE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{128762FD-8547-4C1E-A26F-06BE574CAE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{128762FD-8547-4C1E-A26F-06BE574CAE9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

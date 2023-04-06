@@ -45,8 +45,6 @@
 
                 _arr = NewArr;
                 _arr[++_End] = item;
-
-                GC.Collect();
             }
         }
         public void InsertAt(int item, int index)
