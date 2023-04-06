@@ -85,17 +85,13 @@ namespace HTU.DSAlgo.DataStructures
 
         public void Insert(int index, T value)
         {
+            if (index > Count)
+                throw new ArgumentOutOfRangeException();
             if (index == 0)
             {
                 First = new LinkedListNode<T>(value) { Next = First };
                 Count++;
                 return;
-            }
-            if (index < Count)
-            {
-                LinkedListNode<T> node = GetByIndex(index - 1);
-                node.Next = new LinkedListNode<T>(value) { Next = node.Next };
-                Count++;
             }
             else if (index == Count)
             {
@@ -103,11 +99,17 @@ namespace HTU.DSAlgo.DataStructures
                 Last = Last.Next;
                 Count++;
             }
+            else
+            {
+                LinkedListNode<T> node = GetByIndex(index - 1);
+                node.Next = new LinkedListNode<T>(value) { Next = node.Next };
+                Count++;
+            }
         }
 
         public void RemoveAt(int index)
         {
-            if (index < 0 || index >= Count)
+            if (index >= Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
@@ -208,15 +210,9 @@ namespace HTU.DSAlgo.DataStructures
         private LinkedListNode<T>? GetByIndex(int index)
         {
             LinkedListNode<T> node = First;
-            try
-            {
-                for (int i = 0; i < index; i++)
-                    node = node.Next;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
+            for (int i = 0; i < index && node != null; i++)
+                node = node.Next;
 
             return node;
         }
