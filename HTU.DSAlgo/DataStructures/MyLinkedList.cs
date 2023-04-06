@@ -5,16 +5,16 @@ namespace HTU.DSAlgo.DataStructures
 {
     public class MyLinkedList<T>
     {
-        private Node<T> Head { get; set; }
-        private Node<T> Tail { get; set; }
+        private LinkedListNode<T> First { get; set; }
+        private LinkedListNode<T> Last { get; set; }
         public int Count { get; private set; }
-        public bool IsEmpty => Head == null;
+        public bool IsNullOrEmpty => First == null;
 
         public T this[int index]
         {
             get
             {
-                Node<T> node = getByIndex(index);
+                LinkedListNode<T> node = GetByIndex(index);
                 if (node == null)
                 {
                     throw new IndexOutOfRangeException();
@@ -23,7 +23,7 @@ namespace HTU.DSAlgo.DataStructures
             }
             set
             {
-                Node<T> node = getByIndex(index);
+                LinkedListNode<T> node = GetByIndex(index);
                 if (node == null)
                 {
                     throw new IndexOutOfRangeException();
@@ -35,44 +35,44 @@ namespace HTU.DSAlgo.DataStructures
 
         public MyLinkedList()
         {
-            Head = null;
-            Tail = null;
+            First = null;
+            Last = null;
             Count = 0;
         }
 
         public void Add(T value)
         {
-            Node<T> newNode = new Node<T>(value);
+            LinkedListNode<T> newNode = new LinkedListNode<T>(value);
 
-            if (IsEmpty)
+            if (IsNullOrEmpty)
             {
-                Head = newNode;
-                Tail = newNode;
+                First = newNode;
+                Last = newNode;
             }
-            else if (Head.Next == null)
+            else if (First.Next == null)
             {
-                Head.Next = newNode;
-                Tail = newNode;
+                First.Next = newNode;
+                Last = newNode;
             }
             else
             {
-                Tail.Next = newNode;
-                Tail = newNode;
+                Last.Next = newNode;
+                Last = newNode;
             }
             Count++;
         }
 
         public void Clear()
         {
-            Head = null;
-            Tail = null;
+            First = null;
+            Last = null;
             Count = 0;
         }
 
-        public int IndexOf(T value)
+        public int FindIndex(T value)
         {
-            if (value == null || IsEmpty) return -1;
-            Node<T> node = Head;
+            if (value == null || IsNullOrEmpty) return -1;
+            LinkedListNode<T> node = First;
 
             for (int i = 0; i < Count; i++)
             {
@@ -87,20 +87,20 @@ namespace HTU.DSAlgo.DataStructures
         {
             if (index == 0)
             {
-                Head = new Node<T>(value) { Next = Head };
+                First = new LinkedListNode<T>(value) { Next = First };
                 Count++;
                 return;
             }
             if (index < Count)
             {
-                Node<T> node = getByIndex(index - 1);
-                node.Next = new Node<T>(value) { Next = node.Next };
+                LinkedListNode<T> node = GetByIndex(index - 1);
+                node.Next = new LinkedListNode<T>(value) { Next = node.Next };
                 Count++;
             }
             else if (index == Count)
             {
-                Tail.Next = new Node<T>(value);
-                Tail = Tail.Next;
+                Last.Next = new LinkedListNode<T>(value);
+                Last = Last.Next;
                 Count++;
             }
         }
@@ -114,19 +114,19 @@ namespace HTU.DSAlgo.DataStructures
 
             if (index == 0)
             {
-                Head = Head.Next;
+                First = First.Next;
                 if (Count == 1)
                 {
-                    Tail = null;
+                    Last = null;
                 }
             }
             else
             {
-                Node<T> prevNode = getByIndex(index - 1);
+                LinkedListNode<T> prevNode = GetByIndex(index - 1);
                 prevNode.Next = prevNode.Next.Next;
                 if (index == Count - 1)
                 {
-                    Tail = prevNode;
+                    Last = prevNode;
                 }
             }
 
@@ -135,12 +135,12 @@ namespace HTU.DSAlgo.DataStructures
 
         public bool Contains(T value)
         {
-            if (IsEmpty || value == null)
+            if (IsNullOrEmpty || value == null)
             {
                 return false;
             }
 
-            Node<T> node = Head;
+            LinkedListNode<T> node = First;
             while (node != null)
             {
                 if (node.Value.Equals(value))
@@ -152,26 +152,25 @@ namespace HTU.DSAlgo.DataStructures
             return false;
         }
 
-
         public bool Remove(T value)
         {
-            if (IsEmpty || value == null)
+            if (IsNullOrEmpty || value == null)
             {
                 return false;
             }
 
-            if (Head.Value.Equals(value))
+            if (First.Value.Equals(value))
             {
-                Head = Head.Next;
+                First = First.Next;
                 Count--;
-                if (Head == null)
+                if (First == null)
                 {
-                    Tail = null;
+                    Last = null;
                 }
                 return true;
             }
 
-            Node<T> prev = Head;
+            LinkedListNode<T> prev = First;
             while (prev.Next != null)
             {
                 if (prev.Next.Value.Equals(value))
@@ -180,7 +179,7 @@ namespace HTU.DSAlgo.DataStructures
                     Count--;
                     if (prev.Next == null)
                     {
-                        Tail = prev;
+                        Last = prev;
                     }
                     return true;
                 }
@@ -190,25 +189,25 @@ namespace HTU.DSAlgo.DataStructures
             return false;
         }
 
-
         public override string ToString()
         {
             string result = "";
-            Node<T> node = Head;
+            LinkedListNode<T> node = First;
 
             while (node != null)
             {
                 result += node.ToString();
-                if (node != Tail) result += ", ";
+                if (node != Last) result += ", ";
 
                 node = node.Next;
 
             }
             return result;
         }
-        private Node<T>? getByIndex(int index)
+
+        private LinkedListNode<T>? GetByIndex(int index)
         {
-            Node<T> node = Head;
+            LinkedListNode<T> node = First;
             try
             {
                 for (int i = 0; i < index; i++)
@@ -222,13 +221,12 @@ namespace HTU.DSAlgo.DataStructures
             return node;
         }
 
-
-        private class Node<T>
+        private class LinkedListNode<T>
         {
             public T Value { get; set; }
-            public Node<T> Next { get; set; }
+            public LinkedListNode<T> Next { get; set; }
 
-            public Node(T value)
+            public LinkedListNode(T value)
             {
                 Value = value;
                 Next = null;

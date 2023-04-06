@@ -9,7 +9,7 @@ namespace MyLinkedListTests
         [Test]
         public void Add_IncreasesCount()
         {
-            var list = new MyLinkedList<int>();
+            var list = new HTU.DSAlgo.DataStructures.MyLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
@@ -19,7 +19,7 @@ namespace MyLinkedListTests
         [Test]
         public void Add_AddsToTail()
         {
-            var list = new MyLinkedList<int>();
+            var list = new HTU.DSAlgo.DataStructures.MyLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
@@ -29,29 +29,29 @@ namespace MyLinkedListTests
         [Test]
         public void Clear_ResetsList()
         {
-            var list = new MyLinkedList<int>();
+            var list = new HTU.DSAlgo.DataStructures.MyLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
             list.Clear();
             Assert.That(list.Count, Is.EqualTo(0));
-            Assert.IsTrue(list.IsEmpty);
+            Assert.IsTrue(list.IsNullOrEmpty);
         }
 
         [Test]
         public void IndexOf_ReturnsCorrectIndex()
         {
-            var list = new MyLinkedList<int>();
+            var list = new HTU.DSAlgo.DataStructures.MyLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
-            Assert.That(list.IndexOf(2), Is.EqualTo(1));
+            Assert.That(list.FindIndex(2), Is.EqualTo(1));
         }
 
         [Test]
         public void Insert_InsertsAtCorrectIndex()
         {
-            var list = new MyLinkedList<int>();
+            var list = new HTU.DSAlgo.DataStructures.MyLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
@@ -62,7 +62,7 @@ namespace MyLinkedListTests
         [Test]
         public void RemoveAt_RemovesFromCorrectIndex()
         {
-            var list = new MyLinkedList<int>();
+            var list = new HTU.DSAlgo.DataStructures.MyLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
@@ -73,7 +73,7 @@ namespace MyLinkedListTests
         [Test]
         public void Contains_ReturnsTrueForContainedValue()
         {
-            var list = new MyLinkedList<int>();
+            var list = new HTU.DSAlgo.DataStructures.MyLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
@@ -83,7 +83,7 @@ namespace MyLinkedListTests
         [Test]
         public void Remove_RemovesCorrectValue()
         {
-            var list = new MyLinkedList<int>();
+            var list = new HTU.DSAlgo.DataStructures.MyLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
