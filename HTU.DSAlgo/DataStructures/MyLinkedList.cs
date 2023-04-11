@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace HTU.DSAlgo.DataStructures
 {
-    public class MyLinkedList<T>
+    public class MyLinkedList<T> : IEnumerable<T>
     {
         private LinkedListNode<T> First { get; set; }
         private LinkedListNode<T> Last { get; set; }
@@ -215,6 +217,27 @@ namespace HTU.DSAlgo.DataStructures
                 node = node.Next;
 
             return node;
+        }
+
+        public IEnumerator<T> GetEnumerator() // for foreach function
+        {
+            for (LinkedListNode<T> node = First; node != null; node = node.Next)
+            {
+                yield return node.Value;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void ForEach(Action<object> action)
+        {
+            foreach (var node in this)
+            {
+                action(node);
+            }
         }
 
         private class LinkedListNode<T>

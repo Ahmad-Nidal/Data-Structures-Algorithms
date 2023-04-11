@@ -12,6 +12,20 @@ namespace HTU.DSAlgo
             linkedList.Add(2);
             linkedList.Add(3);
             Console.WriteLine(linkedList);
+            Console.WriteLine("---------");
+            foreach (var node in linkedList)
+            {
+                Console.WriteLine(node);
+            }
+            Console.WriteLine("---------");
+            linkedList.ForEach(n => Console.WriteLine(n));
+            Console.WriteLine("---------");
+            linkedList.ForEach(n =>
+            {
+                n *= 100;
+                Console.WriteLine(n);
+            });
+            
         }
     }
 }
