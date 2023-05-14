@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace HTU.DSAlgo.DataStructures
+namespace HTU.DSAlgo.DataStructures.Lenear
 {
     public class MyLinkedList<T> : IEnumerable<T>
     {

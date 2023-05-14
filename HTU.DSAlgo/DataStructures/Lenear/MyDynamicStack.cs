@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HTU.DSAlgo.DataStructures
+namespace HTU.DSAlgo.DataStructures.Lenear
 {
     public class MyDynamicStack<T>
     {
@@ -24,7 +24,7 @@ namespace HTU.DSAlgo.DataStructures
             if (IsNullOrEmpty)
             {
                 _top = newNode;
-            } 
+            }
             else
             {
                 newNode.Prev = _top;
@@ -71,7 +71,7 @@ namespace HTU.DSAlgo.DataStructures
         }
         private class StackNode<T>
         {
-            internal T Value {  get; set; }
+            internal T Value { get; set; }
             internal StackNode<T> Prev;
 
             public StackNode(T value)

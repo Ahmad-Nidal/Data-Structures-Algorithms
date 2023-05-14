@@ -1,4 +1,4 @@
-﻿namespace DataStructures
+﻿namespace HTU.DSAlgo.DataStructures.Lenear
 {
     public class MyList
     {
@@ -25,12 +25,12 @@
         {
             for (int i = 1; i <= maxNumber; i++)
             {
-                this.Add(i);
+                Add(i);
             }
         }
         public void Add(int item)
         {
-            if ((_End + 1) != _maxSize)
+            if (_End + 1 != _maxSize)
             {
                 _arr[++_End] = item;
             }
@@ -57,9 +57,9 @@
         }
         public void ReamoveAt(int index)
         {
-            for(int i = index; i < _End; i++)
+            for (int i = index; i < _End; i++)
             {
-                _arr[i] = _arr[i+1];
+                _arr[i] = _arr[i + 1];
             }
             _arr[_End--] = 0;
         }
@@ -67,7 +67,7 @@
         {
             _arr[index] = newValue;
         }
-        public void Print(bool oneLine=false)
+        public void Print(bool oneLine = false)
         {
             if (!oneLine)
                 for (int i = 0; i <= _End; i++)

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HTU.DSAlgo.DataStructures
+namespace HTU.DSAlgo.DataStructures.Lenear
 {
     public class MyFixedStack<T>
     {
