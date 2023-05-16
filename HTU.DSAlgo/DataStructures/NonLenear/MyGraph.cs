@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace HTU.DSAlgo.DataStructures.NonLenear
 {
-    internal class MyGraph
+    public class MyGraph
     {
+        int size = 4;
+        int[,] graph = {
+            { 0, 1, 1, 0 },
+            { 1, 0, 1, 0 },
+            { 1, 1, 0, 1 },
+            { 0, 0, 1, 0 }
+        };
     }
 }
